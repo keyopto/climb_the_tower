@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://cih7mtob1d2gq"]
+[gd_scene load_steps=13 format=3 uid="uid://cih7mtob1d2gq"]
 
 [ext_resource type="Texture2D" uid="uid://w8hjaichoqk7" path="res://arts/character/red_body_rhombus.png" id="1_f63x6"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_xcvkh"]
 [ext_resource type="Texture2D" uid="uid://c2r5nmhgvr3cy" path="res://arts/character/face_e.png" id="2_htiwx"]
 [ext_resource type="Texture2D" uid="uid://dbyfr1drxlag2" path="res://arts/character/red_hand_open.png" id="2_ryk06"]
 [ext_resource type="Texture2D" uid="uid://xpbuk334uudd" path="res://arts/character/red_hand_closed.png" id="4_mkdhg"]
@@ -478,11 +479,11 @@ _data = {
 "turn_over": SubResource("Animation_wqm5s")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="Area2D"]
 position = Vector2(3, 4)
+script = ExtResource("1_xcvkh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-1, -1)
 shape = SubResource("RectangleShape2D_16cyu")
 

@@ -1,12 +1,12 @@
 extends Node2D
 
 var current_chosen_letter:Key;
+var current_height:int
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	current_chosen_letter = choose_random_letter()
+	current_height = 0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
@@ -25,4 +25,6 @@ func is_event_letter_pressed(event) -> bool:
 func _unhandled_input(event):
 	if is_event_letter_pressed(event):
 		if(event.key_label == current_chosen_letter):
+			$Player.next_climb()
 			current_chosen_letter = choose_random_letter()
+			current_height += 1
