@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7l1rwrimr8oy"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_fubip"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_5odkg"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_mfs6n"]
+events = [SubResource("InputEventAction_5odkg")]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_fubip")
+
+[node name="CurrentHeightLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 30.0
+offset_right = 20.0
+offset_bottom = 85.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -226.0
+offset_top = -127.0
+offset_right = -100.0
+offset_bottom = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+shortcut = SubResource("Shortcut_mfs6n")
+text = "Start"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
