@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dexocffi6tqlf"]
+
+[ext_resource type="Script" path="res://scripts/climb_scene.gd" id="1_ljk7c"]
+[ext_resource type="PackedScene" uid="uid://cih7mtob1d2gq" path="res://scenes/character/player.tscn" id="2_wg272"]
+[ext_resource type="PackedScene" uid="uid://b7l1rwrimr8oy" path="res://scenes/hud.tscn" id="3_pca77"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_ljk7c")
+
+[node name="Player" parent="." instance=ExtResource("2_wg272")]
+position = Vector2(323, 511)
+
+[node name="KeyRequested" type="Label" parent="."]
+offset_left = 902.0
+offset_top = 262.0
+offset_right = 942.0
+offset_bottom = 304.0
+theme_override_font_sizes/font_size = 30
+text = "j"
+
+[node name="HUD" parent="." instance=ExtResource("3_pca77")]
+
+[connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
