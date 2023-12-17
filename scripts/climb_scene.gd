@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var start_timer: float = 2
+
 var current_chosen_letter:Key;
 var current_height:int
 
@@ -34,7 +36,9 @@ func _unhandled_input(event):
 
 
 func _on_hud_start_game():
-	$Player.prepare_start_of_game()
-	
-	await get_tree().create_timer(4.0).timeout
+	$Player.prepare_start_of_game(start_timer)
+	$TimerUI.start_timer(start_timer)
+
+
+func _on_timer_ui_timer_start_finish():
 	choose_random_letter()
