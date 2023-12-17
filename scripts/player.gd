@@ -8,8 +8,11 @@ func _ready():
 func _process(delta):
 	pass
 	
-func prepare_start_of_game():
-	$AnimationPlayer.play("turn_over")
+func prepare_start_of_game(time_to_take):
+	var length_animation = $AnimationPlayer.get_animation("turn_over").length
+	var new_speed_animation = length_animation / time_to_take
+	
+	$AnimationPlayer.play("turn_over", -1, new_speed_animation, false)
 	
 func next_climb():
 	if (cur_climb_animation == "climb_right"):
