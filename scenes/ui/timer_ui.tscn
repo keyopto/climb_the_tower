@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbffvedljsowl"]
+
+[ext_resource type="Script" path="res://scripts/timer_ui.gd" id="1_k85eu"]
+
+[sub_resource type="Animation" id="Animation_tgip2"]
+resource_name = "timer"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TimerLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["3", "2", "1", "GO"]
+}
+
+[sub_resource type="Animation" id="Animation_y6066"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TimerLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["3"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k82pi"]
+_data = {
+"RESET": SubResource("Animation_y6066"),
+"timer": SubResource("Animation_tgip2")
+}
+
+[node name="TimerUI" type="CanvasLayer"]
+script = ExtResource("1_k85eu")
+
+[node name="TimerLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.0
+offset_top = -136.5
+offset_right = 57.0
+offset_bottom = 136.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 200
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k82pi")
+}
